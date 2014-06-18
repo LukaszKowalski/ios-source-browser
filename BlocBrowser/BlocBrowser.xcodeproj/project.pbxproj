@@ -20,6 +20,7 @@
 		938ABB5919522B25009BEAF2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 938ABB5719522B25009BEAF2 /* InfoPlist.strings */; };
 		938ABB5B19522B25009BEAF2 /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 938ABB5A19522B25009BEAF2 /* BlocBrowserTests.m */; };
 		938ABB6619522B58009BEAF2 /* BLCWebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 938ABB6519522B58009BEAF2 /* BLCWebBrowserViewController.m */; };
+		938ABB6919523D64009BEAF2 /* BLCAwesomeFloatingToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 938ABB6819523D64009BEAF2 /* BLCAwesomeFloatingToolbar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		938ABB5A19522B25009BEAF2 /* BlocBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocBrowserTests.m; sourceTree = "<group>"; };
 		938ABB6419522B58009BEAF2 /* BLCWebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCWebBrowserViewController.h; sourceTree = "<group>"; };
 		938ABB6519522B58009BEAF2 /* BLCWebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCWebBrowserViewController.m; sourceTree = "<group>"; };
+		938ABB6719523D64009BEAF2 /* BLCAwesomeFloatingToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCAwesomeFloatingToolbar.h; sourceTree = "<group>"; };
+		938ABB6819523D64009BEAF2 /* BLCAwesomeFloatingToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCAwesomeFloatingToolbar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 			children = (
 				938ABB4419522B25009BEAF2 /* BLCAppDelegate.h */,
 				938ABB4519522B25009BEAF2 /* BLCAppDelegate.m */,
+				938ABB6719523D64009BEAF2 /* BLCAwesomeFloatingToolbar.h */,
+				938ABB6819523D64009BEAF2 /* BLCAwesomeFloatingToolbar.m */,
 				938ABB6419522B58009BEAF2 /* BLCWebBrowserViewController.h */,
 				938ABB6519522B58009BEAF2 /* BLCWebBrowserViewController.m */,
 				938ABB4719522B25009BEAF2 /* Images.xcassets */,
@@ -248,6 +253,7 @@
 				938ABB4619522B25009BEAF2 /* BLCAppDelegate.m in Sources */,
 				938ABB4219522B25009BEAF2 /* main.m in Sources */,
 				938ABB6619522B58009BEAF2 /* BLCWebBrowserViewController.m in Sources */,
+				938ABB6919523D64009BEAF2 /* BLCAwesomeFloatingToolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
