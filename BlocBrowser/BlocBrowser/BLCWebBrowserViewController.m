@@ -141,6 +141,18 @@
     }
 }
 
+- (void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToPanWithOffset:(CGPoint)offset {
+    CGPoint startingPoint = toolbar.frame.origin;
+    CGPoint newPoint = CGPointMake(startingPoint.x + offset.x, startingPoint.y + offset.y);
+    
+    CGRect potentialNewFrame = CGRectMake(newPoint.x, newPoint.y, CGRectGetWidth(toolbar.frame), CGRectGetHeight(toolbar.frame));
+    
+    if (CGRectContainsRect(self.view.bounds, potentialNewFrame)) {
+        NSLog(@"setting frame: %@", NSStringFromCGRect(potentialNewFrame));
+        toolbar.frame = potentialNewFrame;
+    }
+}
+
 #pragma mark - Miscellaneous
 
 - (void) updateButtonsAndTitle {
@@ -169,7 +181,7 @@
     
     UIWebView *newWebView = [[UIWebView alloc] init];
     newWebView.delegate = self;
-    [self.view addSubview:newWebView];
+    [self.view insertSubview:newWebView belowSubview:self.awesomeToolbar];
     
     self.webview = newWebView;
     
