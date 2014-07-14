@@ -19,6 +19,7 @@
 		C33D60241972B1BB0092DD1A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33D600C1972B1BB0092DD1A /* UIKit.framework */; };
 		C33D602C1972B1BB0092DD1A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C33D602A1972B1BB0092DD1A /* InfoPlist.strings */; };
 		C33D602E1972B1BB0092DD1A /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C33D602D1972B1BB0092DD1A /* BlocBrowserTests.m */; };
+		C33D60391972B1F50092DD1A /* BLCWebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33D60381972B1F50092DD1A /* BLCWebBrowserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		C33D60291972B1BB0092DD1A /* BlocBrowserTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BlocBrowserTests-Info.plist"; sourceTree = "<group>"; };
 		C33D602B1972B1BB0092DD1A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C33D602D1972B1BB0092DD1A /* BlocBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocBrowserTests.m; sourceTree = "<group>"; };
+		C33D60371972B1F50092DD1A /* BLCWebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLCWebBrowserViewController.h; path = ../BLCWebBrowserViewController.h; sourceTree = "<group>"; };
+		C33D60381972B1F50092DD1A /* BLCWebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLCWebBrowserViewController.m; path = ../BLCWebBrowserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 			children = (
 				C33D60171972B1BB0092DD1A /* BLCAppDelegate.h */,
 				C33D60181972B1BB0092DD1A /* BLCAppDelegate.m */,
+				C33D60371972B1F50092DD1A /* BLCWebBrowserViewController.h */,
+				C33D60381972B1F50092DD1A /* BLCWebBrowserViewController.m */,
 				C33D601A1972B1BB0092DD1A /* Images.xcassets */,
 				C33D600F1972B1BB0092DD1A /* Supporting Files */,
 			);
@@ -242,6 +247,7 @@
 			files = (
 				C33D60191972B1BB0092DD1A /* BLCAppDelegate.m in Sources */,
 				C33D60151972B1BB0092DD1A /* main.m in Sources */,
+				C33D60391972B1F50092DD1A /* BLCWebBrowserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
