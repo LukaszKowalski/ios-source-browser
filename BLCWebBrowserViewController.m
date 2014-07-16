@@ -139,12 +139,15 @@
     [self updateButtonsAndTitle];
     [self.webView stopLoading];
 }
+
 -(void) updateButtonsAndTitle {
     NSString *webSiteTitle = [self.webView stringByEvaluatingJavaScriptFromString:@"document.tile"];
     if (webSiteTitle) {
-        self.title = webSiteTitle;
+        self.navigationItem.title = webSiteTitle;
+        
     }else{
-        self.title = self.webView.request.URL.absoluteString;
+        self.navigationItem.title = self.webView.request.URL.absoluteString;
+        
     }
     
     self.backButton.enabled = [self.webView canGoBack];
