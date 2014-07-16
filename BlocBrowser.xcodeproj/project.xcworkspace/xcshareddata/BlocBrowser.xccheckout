@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E0884B87-BF7C-411F-9647-A1348C4B0912</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BlocBrowser</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AF50E26F-96A6-46F7-993F-6E7D708BF76C</key>
+		<string>https://github.com/LukaszKowalski/ios-source-browser.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BlocBrowser.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AF50E26F-96A6-46F7-993F-6E7D708BF76C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/LukaszKowalski/ios-source-browser.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AF50E26F-96A6-46F7-993F-6E7D708BF76C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AF50E26F-96A6-46F7-993F-6E7D708BF76C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios-source-browser</string>
+		</dict>
+	</array>
+</dict>
+</plist>
