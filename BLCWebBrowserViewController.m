@@ -52,13 +52,10 @@
     [self.reloadButton setEnabled:NO];
     
     [self.backButton setTitle:NSLocalizedString(@"back", @"back button") forState:UIControlStateNormal];
-    [self.backButton addTarget:self.webView action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
     [self.forwardButton setTitle:NSLocalizedString(@"forward", @"forward button") forState:UIControlStateNormal];
-    [self.forwardButton addTarget:self.webView action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
     [self.stopButton setTitle:NSLocalizedString(@"stop", @"stop button") forState:UIControlStateNormal];
-    [self.stopButton addTarget:self.webView action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
     [self.reloadButton setTitle:NSLocalizedString(@"reload", @"reload button") forState:UIControlStateNormal];
-    [self.reloadButton addTarget:self.webView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
+    
     
     for (UIView *subview in @[self.webView, self.textField, self.backButton, self.forwardButton, self.reloadButton, self.stopButton]){
         [mainView addSubview:subview];
@@ -147,7 +144,6 @@
         
     }else{
         self.navigationItem.title = self.webView.request.URL.absoluteString;
-        
     }
     
     self.backButton.enabled = [self.webView canGoBack];
@@ -165,6 +161,33 @@
     self.isLoading = NO;
     [self updateButtonsAndTitle];
     [self.activityIndicator stopAnimating];
+}
+- (void) resetWebView{
+    [self.webView removeFromSuperview];
+    UIWebView *newWebView = [[UIWebView alloc] init];
+    
+    newWebView.delegate= self;
+    [self.view addSubview:newWebView];
+    
+    self.webView = newWebView;
+    
+    [self addButtonTargets];
+    
+    self.textField.text = nil;
+    [self updateButtonsAndTitle];
+    UIAlertView *welcomeAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Welcome!", @"Welcome title") message:NSLocalizedString(@"Get excited to use the best web browser ever!", @"Welcome comment") delegate:nil cancelButtonTitle:NSLocalizedString(@"OK, I'm excited!", @"Welcome button title") otherButtonTitles:nil, nil];
+    [welcomeAlert show];
+}
+-(void) addButtonTargets {
+    for (UIButton *button in @[self.backButton, self.forwardButton, self.stopButton, self.reloadButton]) {
+        [button removeTarget:nil action:NULL forControlEvents:UIControlEventTouchUpInside];
+    }
+    [self.backButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    [self.forwardButton addTarget:self action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
+    [self.stopButton addTarget:self action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
+    [self.reloadButton addTarget:self action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
+    
+
 }
 
 @end
