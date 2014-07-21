@@ -19,9 +19,9 @@
 
 @property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) UITextField *textField;
-@property (assign, nonatomic) BOOL isLoading;
 @property (nonatomic, strong) BLCAwesomeFloatingToolbar *awesomeToolbar;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, assign) NSUInteger frameCount;
 
 @end
 
@@ -73,7 +73,6 @@
     
     self.textField.frame = CGRectMake(0, 0, width, itemHight);
     self.webView.frame = CGRectMake(0, CGRectGetMaxY(self.textField.frame), width, browserHight);
-    
     self.awesomeToolbar.frame = CGRectMake(20, 100, 280, 60);
 }
 
@@ -120,6 +119,7 @@
     [alert show];
     [self updateButtonsAndTitle];
     [self.webView stopLoading];
+    self.frameCount--;
 }
 
 -(void) updateButtonsAndTitle {
@@ -133,16 +133,16 @@
     
     [self.awesomeToolbar setEnabled:[self.webView canGoBack] forButtonWithTitle:kBLCWebBrowserBackString];
     [self.awesomeToolbar setEnabled:[self.webView canGoForward] forButtonWithTitle:kBLCWebBrowserForwardString];
-    [self.awesomeToolbar setEnabled:[self.webView canGoForward] forButtonWithTitle:kBLCWebBrowserForwardString];
-
+    [self.awesomeToolbar setEnabled:self.frameCount > 0 forButtonWithTitle:kBLCWebBrowserStopString];
+    [self.awesomeToolbar setEnabled:self.webView.request.URL && self.frameCount == 0 forButtonWithTitle:kBLCWebBrowserRefreshString];
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    self.isLoading = YES;
+    self.frameCount++;
     [self updateButtonsAndTitle];
     [self.activityIndicator startAnimating];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    self.isLoading = NO;
+    self.frameCount--;
     [self updateButtonsAndTitle];
     [self.activityIndicator stopAnimating];
 }
