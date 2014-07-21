@@ -103,14 +103,12 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     [textField resignFirstResponder];
-    NSString *typedURL = textField.text;
+    NSString *typedURL = [NSString string]textField.text;
     
     if ([typedURL rangeOfString:@"."].location != NSNotFound) {
         typedURL = textField.text;
     }else{
-        NSLog(@"google search %@", typedURL);
         typedURL = [NSString stringWithFormat:@"http://www.google.com/search?q=%@", textField.text];
-        NSLog(@"google URL search %@", typedURL);
     }
     
  //   int spaceIsThere = [[typedURL componentsSeparatedByString:@" "] count];
@@ -144,10 +142,8 @@
     NSString *webSiteTitle = [self.webView stringByEvaluatingJavaScriptFromString:@"document.tile"];
     if (webSiteTitle) {
         self.navigationItem.title = webSiteTitle;
-        
     }else{
         self.navigationItem.title = self.webView.request.URL.absoluteString;
-        
     }
     
     self.backButton.enabled = [self.webView canGoBack];

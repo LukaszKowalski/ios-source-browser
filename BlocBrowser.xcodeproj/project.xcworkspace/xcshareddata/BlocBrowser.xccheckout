@@ -19,6 +19,8 @@
 	<dict>
 		<key>AF50E26F-96A6-46F7-993F-6E7D708BF76C</key>
 		<string>../..</string>
+		<key>D50ED2A7-81A4-4B85-91FB-1D109811F6C2</key>
+		<string>../../../BlocBrowser</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/LukaszKowalski/ios-source-browser.git</string>
@@ -28,6 +30,14 @@
 	<string>AF50E26F-96A6-46F7-993F-6E7D708BF76C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D50ED2A7-81A4-4B85-91FB-1D109811F6C2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BlocBrowser</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
