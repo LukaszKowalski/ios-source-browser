@@ -102,7 +102,9 @@
         }
         
         thisLabel.frame = CGRectMake(labelX, labelY, labelWidth, labelHeight);
+        NSLog(@"%@", NSStringFromCGRect(thisLabel.frame));
     }
+    
 }
 
 - (UILabel *) labelFromTouches:(NSSet *)touches withEvent:(UIEvent *)event {
