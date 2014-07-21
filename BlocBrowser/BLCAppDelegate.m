@@ -15,18 +15,19 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    BLCWebBrowserViewController *viewController = [[BLCWebBrowserViewController alloc] init];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    self.window.rootViewController = self.navigationController;
+    
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[BLCWebBrowserViewController alloc] init]];
     [self.window makeKeyAndVisible];
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-   
-        UINavigationController *navigationVC = (UINavigationController *)self.window.rootViewController;
-        BLCWebBrowserViewController *browserVC = [[navigationVC viewControllers] firstObject];
-        [browserVC resetWebView];
+      BLCWebBrowserViewController *browserVC = [[self.navigationController viewControllers] firstObject];
+      [browserVC resetWebView];
     }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

@@ -10,7 +10,7 @@
 
 @interface BLCAppDelegate : UIResponder <UIApplicationDelegate>
 
-
+@property (strong, nonatomic) UINavigationController *navigationController;
 
 @property (strong, nonatomic) UIWindow *window;
 
