@@ -83,19 +83,11 @@
     [textField resignFirstResponder];
     NSString *typedURL = textField.text;
     
-    NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-   
-    
-    NSRange range = [typedURL rangeOfCharacterFromSet:whitespace];
-    NSRange range1 = [typedURL rangeOfString:@"\\."];
-    if (range.location == NSNotFound && range1.location == NSNotFound) {
-        NSLog(@"test");
+    NSRange range1 = [typedURL rangeOfString:@"."];
+    if (range1.location != NSNotFound) {
         typedURL = textField.text;
     }else{
-        NSLog(@"google search %@", typedURL);
-        typedURL = [typedURL stringByReplacingOccurrencesOfString:@" " withString:@"\%20"];
         typedURL = [NSString stringWithFormat:@"http://www.google.com/search?q=%@", textField.text];
-        NSLog(@"google URL search %@", typedURL);
     }
 
    
@@ -172,5 +164,22 @@
         [self.webView reload];
     }
 }
+
+- (void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToPanWithOffset:(CGPoint)offset {
+    CGPoint startingPoint = toolbar.frame.origin;
+    CGPoint newPoint = CGPointMake(startingPoint.x + offset.x, startingPoint.y + offset.y);
+    
+    CGRect potentialNewFrame = CGRectMake(newPoint.x, newPoint.y, CGRectGetWidth(toolbar.frame), CGRectGetHeight(toolbar.frame));
+    
+    if (CGRectContainsRect(self.view.bounds, potentialNewFrame)) {
+        toolbar.frame = potentialNewFrame;
+    }
+}
+-(void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToPinchWithScale:(CGFloat)scale{
+    
+  
+}
+
+
 
 @end
