@@ -15,6 +15,8 @@
 @optional
 
 -(void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didSelectButtonWithTile:(NSString *)title;
+-(void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToPanWithOffset:(CGPoint)offset;
+-(void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToPinchWithScale:(CGFloat)scale;
 
 @end
 

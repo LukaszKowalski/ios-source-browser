@@ -14,6 +14,9 @@
 @property (strong, nonatomic) NSArray *colors;
 @property (strong, nonatomic) NSArray *label;
 @property (nonatomic, weak) UILabel *currentLabel;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
+@property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, strong) UIPinchGestureRecognizer *pinchGesture;
 
 @end
 
@@ -68,6 +71,11 @@
         for (UILabel *thisLabel in self.label) {
             [self addSubview:thisLabel];
         }
+        self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapFire:)];
+        [self addGestureRecognizer:self.tapGesture];
+        self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panFire:)];
+        [self addGestureRecognizer:self.panGesture];
+        self.pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchFire:)];
     }
     
     return self;
@@ -113,39 +121,49 @@
     UIView *subview = [self hitTest:location withEvent:event];
     return (UILabel *)subview;
 }
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    UILabel *label = [self labelFromTouches:touches withEvent:event];
-    
-    self.currentLabel = label;
-    self.currentLabel.alpha = 0.5;
-}
-- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-    UILabel *label = [self labelFromTouches:touches withEvent:event];
-    if (self.currentLabel != label) {
-        self.currentLabel.alpha = 1;
-    }else{
-        self.currentLabel.alpha = 0.5;
-    }
-}
-- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    UILabel *label = [self labelFromTouches:touches withEvent:event];
-    
-    if (self.currentLabel == label) {
+- (void) tapFire:(UITapGestureRecognizer *)recognizer{
+    NSLog(@"taped");
+    if (recognizer.state == UIGestureRecognizerStateRecognized) {
+        CGPoint tapPoint = [recognizer locationInView:self];
+        UIView *tappedView = [self hitTest:tapPoint withEvent:nil];
         
-        if ([self.delegate respondsToSelector:@selector(floatingToolbar:didSelectButtonWithTile:)]) {
-            [self.delegate floatingToolbar:self didSelectButtonWithTile:self.currentLabel.text];
+        if ([self.label containsObject:tappedView]){
+            if ([self.delegate respondsToSelector:@selector(floatingToolbar:didSelectButtonWithTile:)]){
+                [self.delegate floatingToolbar:self didSelectButtonWithTile:((UILabel *)tappedView).text];
+                NSLog(@"%@", ((UILabel *)tappedView).text);
+            }
         }
     }
+}
+- (void) panFire:(UIPanGestureRecognizer *)recognizer{
+    NSLog(@"paned");
+        if (recognizer.state == UIGestureRecognizerStateChanged) {
+            CGPoint translation = [recognizer translationInView:self];
+            
+            NSLog(@"New translation: %@", NSStringFromCGPoint(translation));
+            
+            if ([self.delegate respondsToSelector:@selector(floatingToolbar:didTryToPanWithOffset:)]) {
+                [self.delegate floatingToolbar:self didTryToPanWithOffset:translation];
+            }
+            
+            [recognizer setTranslation:CGPointZero inView:self];
+        }
+}
+- (void) pinchFire:(UIPinchGestureRecognizer *)recognizer{
+    NSLog(@"pinched"); // does not work : ( - i don't know why
     
-    self.currentLabel.alpha = 1;
-    self.currentLabel = nil;
+    
+//    CGFloat factor = [(UIPinchGestureRecognizer *) recognizer scale ];
+//    NSLog(@"pinched, %f", factor);
+//    
+//    if ([self.delegate respondsToSelector:@selector(pinchFire:)]){
+//        [self.delegate floatingToolbar:self didTryToPinchWithScale:factor];
+//    }
+    
+    
 }
 
--(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
-    self.currentLabel.alpha = 1;
-    self.currentLabel = nil;
-}
+
 
 
 @end
